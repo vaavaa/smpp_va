@@ -104,3 +104,14 @@ insert city_directory values (null, 'Тараз', 'taraz');
 insert city_directory values (null, 'Уральск', 'uralsk');
 insert city_directory values (null, 'Усть-Каменогорск', 'ust-kamenogorsk');
 insert city_directory values (null, 'Шымкент','shymkent');
+
+CREATE TABLE `service` (
+  `id_client` int(11) NOT NULL,
+  `id_content` int(11) NOT NULL,
+  `action_counter` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `finish_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_client`,`id_content`,`action_counter`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
