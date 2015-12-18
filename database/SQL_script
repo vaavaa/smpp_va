@@ -1,0 +1,106 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+CREATE TABLE city_directory (
+  id_city int(11) NOT NULL,
+  city_name varchar(100) NOT NULL,
+  city_get_arrg varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+CREATE TABLE clients (
+  id int(11) NOT NULL,
+  addr bigint(20) NOT NULL,
+  `status` int(11) NOT NULL COMMENT '0-ok,1-inactive '
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+CREATE TABLE content_anecdote (
+  id int(11) NOT NULL,
+  content_type_id int(11) NOT NULL,
+  created_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `value` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+CREATE TABLE content_metcast (
+  id int(11) NOT NULL,
+  content_type_id int(11) NOT NULL,
+  Forecast_date date NOT NULL,
+  id_city int(11) NOT NULL,
+  metcast_text text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+CREATE TABLE content_rate (
+  id int(11) NOT NULL,
+  content_type_id int(11) NOT NULL,
+  rate_date date NOT NULL,
+  currency varchar(3) NOT NULL,
+  Rate float NOT NULL,
+  Step varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+CREATE TABLE content_type (
+  id int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `table_name` varchar(20) NOT NULL,
+  name_eng varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+
+ALTER TABLE city_directory
+  ADD PRIMARY KEY (id_city);
+
+ALTER TABLE clients
+  ADD PRIMARY KEY (id),
+  ADD UNIQUE KEY ADDR (addr);
+
+ALTER TABLE content_anecdote
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE content_metcast
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE content_rate
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE content_type
+  ADD PRIMARY KEY (id),
+  ADD UNIQUE KEY content_name (`name`);
+
+
+ALTER TABLE city_directory
+  MODIFY id_city int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE clients
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE content_anecdote
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE content_metcast
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE content_rate
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE content_type
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `content_type` (`id`, `name`, `table_name`, `name_eng`) VALUES
+(2, 'Анекдот', 'content_anecdot', 'Anekdot'),
+(3, 'Курс валют', 'content_rate', 'Kurs valut'),
+(4, 'Гороскоп', 'content_ascendant', 'Horoscope'),
+(5, 'Погода', 'content_metcast', 'Pogoda');
+
+insert city_directory values (null, 'Актау', 'aktau');
+insert city_directory values (null, 'Актау', 'aktau');
+insert city_directory values (null, 'Актобe', 'aktobe');
+insert city_directory values (null, 'Алматы', 'almaty');
+insert city_directory values (null, 'Астана', 'astana');
+insert city_directory values (null, 'Атырау', 'atyrau');
+insert city_directory values (null, 'Жезказган', 'jezkazgan');
+insert city_directory values (null, 'Караганда', 'karaganda');
+insert city_directory values (null, 'Кокшетау', 'kokshetau');
+insert city_directory values (null, 'Костанай', 'kostanay');
+insert city_directory values (null, 'Кызылорда', 'kyzylorda');
+insert city_directory values (null, 'Павлодар', 'pavlodar');
+insert city_directory values (null, 'Петропавловск', 'petropavlovsk');
+insert city_directory values (null, 'Семей', 'semey');
+insert city_directory values (null, 'Талдыкорган', 'toldykorgan');
+insert city_directory values (null, 'Тараз', 'taraz');
+insert city_directory values (null, 'Уральск', 'uralsk');
+insert city_directory values (null, 'Усть-Каменогорск', 'ust-kamenogorsk');
+insert city_directory values (null, 'Шымкент','shymkent');
